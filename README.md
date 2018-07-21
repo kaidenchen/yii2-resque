@@ -15,24 +15,7 @@ Installation
 
 1.  The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
-    Add
-
-    ```
-    "repositories":[
-            {
-                "type": "git",
-                "url": "https://github.com/sprytechies/yii2-resque.git"
-            }
-        ],
-    ```
-
-    Either run
-
-    ```
-    php composer.phar require --prefer-dist resque/yii2-resque "*"
-    ```
-
-    or add
+    add
     
     ```
     "resque/yii2-resque": "dev-master"
