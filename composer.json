@@ -1,13 +1,13 @@
 {
-    "name": "resque/yii2-resque",
+    "name": "kaidenchen/yii2-resque-enhance",
     "description": "Yii2 Resque",
     "type": "yii2-extension",
     "keywords": ["yii2","extension"],
     "license": "MIT",
     "authors": [
         {
-            "name": "Sprytechies",
-            "email": "devteam01@sprytechies.com"
+            "name": "kaidenchen",
+            "email": "472359272@qq.com"
         }
     ],
     
