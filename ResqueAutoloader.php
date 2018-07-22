@@ -34,8 +34,8 @@ class ResqueAutoloader
     static public function autoload($class)
     {
         //yii 2 advance;
-        if(file_exists(\yii\BaseYii::$app->basePath.'/../frontend/components')){
-            $file= \yii\BaseYii::$app->basePath.'/../frontend/components';
+        if(file_exists(\yii\BaseYii::$app->basePath.'/../console/components')){
+            $file= \yii\BaseYii::$app->basePath.'/../console/components';
             if(scandir($file)){
             foreach (scandir($file) as $filename) {
                $path = $file. $filename;
