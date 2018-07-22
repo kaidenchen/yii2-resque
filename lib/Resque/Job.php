@@ -64,36 +64,22 @@ class Resque_Job
 	 */
 	public static function create($queue, $class, $args = null, $monitor = false)
 	{
-                
-                if ($args !== null && !is_array($args)) {
+		if($args !== null && !is_array($args)) {
 			throw new InvalidArgumentException(
 				'Supplied $args must be an array.'
 			);
 		}
-
-		$new = true;
-		if(isset($args['id'])) {
-			$id = $args['id'];
-			// unset($args['id']);
-			$new = false;
-		} else {
-			$id = md5(uniqid('', true));
-		}
+		$id = md5(uniqid('', true));
 		Resque::push($queue, array(
 			'class'	=> $class,
 			'args'	=> array($args),
 			'id'	=> $id,
 		));
-                
-		if ($monitor) {
-			if ($new) {
-				Resque_Job_Status::create($id);
-			} else {
-				$statusInstance = new Resque_Job_Status($id);
-				$statusInstance->update($id, Resque_Job_Status::STATUS_WAITING);
-			}
+
+		if($monitor) {
+			Resque_Job_Status::create($id);
 		}
-                
+
 		return $id;
 	}
 
@@ -200,7 +186,7 @@ class Resque_Job
 	public function perform()
 	{
 		$instance = $this->getInstance();
-                try {
+        try {
 			Resque_Event::trigger('beforePerform', $this);
 
 			if(method_exists($instance, 'setUp')) {

@@ -15,7 +15,8 @@ use resque\lib\Resque\Resque_Event;
 use resque\lib\Resque\Resque_Job;
 use resque\lib\MonologInit\MonologInit_MonologInit;
 use resque\lib\Resque\Job\Resque_Job_Status;
-//include(dirname(__FILE__) . '/Resque/Event.php');
+use resque\lib\Resque\Job\Resque_Job_DirtyExitException;
+
 class Resque_Worker
 {
     const LOG_NONE = 0;

@@ -6,6 +6,10 @@
  * @author		Chris Boulton <chris@bigcommerce.com>
  * @license		http://www.opensource.org/licenses/mit-license.php
  */
+namespace resque\lib\Resque\Failure;
+
+use resque\lib\Resque;
+use resque\lib\Resque\Failure\Resque_Failure_Interface;
 
 class Resque_Failure_Redis implements Resque_Failure_Interface
 {

@@ -6,6 +6,13 @@
  * @author		Chris Boulton <chris@bigcommerce.com>
  * @license		http://www.opensource.org/licenses/mit-license.php
  */
+namespace resque\lib\Resque;
+
+require_once dirname(__FILE__) . '/Failure/Interface.php';
+require_once dirname(__FILE__) . '/Failure/Redis.php';
+
+use resque\lib\Resque;
+
 class Resque_Failure
 {
 	/**
@@ -21,7 +28,7 @@ class Resque_Failure
 	 * @param \Resque_Worker $worker Instance of Resque_Worker that was running this job when it failed.
 	 * @param string $queue          The name of the queue that this job was fetched from.
 	 */
-	public static function create($payload, Exception $exception, Resque_Worker $worker, $queue)
+	public static function create($payload, \Exception $exception, Resque_Worker $worker, $queue)
 	{
 		$backend = self::getBackend();
 		new $backend($payload, $exception, $worker, $queue);
@@ -35,8 +42,7 @@ class Resque_Failure
 	public static function getBackend()
 	{
 		if(self::$backend === null) {
-			require  dirname(__FILE__) . '/Failure/Redis.php';
-			self::$backend = 'Resque_Failure_Redis';
+			self::$backend = 'resque\lib\Resque\Failure\Resque_Failure_Redis';
 		}
 
 		return self::$backend;
